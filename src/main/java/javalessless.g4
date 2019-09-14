@@ -26,6 +26,9 @@ STA: 'static';
 FAL: 'false';
 TRU: 'true';
 
+Var: WORD(Numl | '_' | WORD )*;
+NumR: Numl'.'Numl | NNuml'.'Numl;
+
 //Operadores:
 Atrib: '=';
 AtrArit: '+=';
@@ -41,15 +44,19 @@ KCL: '}';
 AP: '(';
 FP: ')';
 
-WORD : 'a'..'z'|'A'..'Z';
-Numl: '0'..'9';
-NumR: Numl'.'Numl;
-OBJ: Var'.'Var;
-Var: WORD (WORD|Numl|'_')*;
 Str: '"' (~('\\'|'"') ) * '"';
 EndL: ';';
 PTR: '.';
+COMA: ',';
 
-NEWLINE: 'r'?'\n';
-WS : [ \t]+ -> skip;
-Comment: '//'.+;
+NEWLINE: ('\r'? '\n' | '\r')+;
+WS : ( '\t' | ' ' | '\r' | '\n' | '\u000c')+ -> skip;
+Comment: '//' ~[\r\n]* -> skip;
+
+LOWW: 'a'..'z';
+UPPW: 'A'..'Z';
+Numl: '0'..'9';
+NNuml: '-'Numl;
+TYPES: 'int' | 'char' | 'boolean';
+WORD : (LOWW | UPPW)+;
+MODV: PRI | PUB | PRO;
