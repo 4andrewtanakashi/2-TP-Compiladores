@@ -1,4 +1,6 @@
-#ETAPA 1 : Trabalho de Compiladores :
+#ETAPA 1
+    
+#Trabalho de Compiladores :
 
 O analisador léxico deverá ser implementado usando o gerador ANTLR . Ele deverá retornar, a cada cha-
 mada, o token reconhecido.
