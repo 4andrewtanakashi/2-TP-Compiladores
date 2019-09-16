@@ -1,4 +1,8 @@
 lexer grammar javalessless;
+//
+//// Casos de Erro:
+//Error1: Numl(Var);
+//Error2:
 
 // Palavras Reservadas:
 ABS: 'abstract';
@@ -55,7 +59,7 @@ Comment: '//' ~[\r\n]* -> skip;
 
 LOWW: 'a'..'z';
 UPPW: 'A'..'Z';
-Numl: '0'..'9';
+Numl: ('0'..'9')+;
 NNuml: '-'Numl;
-WORD : (LOWW | UPPW)+;
+WORD: (LOWW | UPPW)+;
 MODV: PRI | PUB | PRO;

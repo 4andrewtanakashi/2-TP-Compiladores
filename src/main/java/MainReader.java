@@ -10,7 +10,7 @@ import java.util.List;
 public class MainReader {
     public static void main (String...args) throws IOException {
         //Caminho que almejamos identificar leximas
-        String filePath = "/home/ghamorim/trabComp/1-etapa/src/test/java/teste.javalessless";
+        String filePath = "/home/aluno/Documentos/trabComp/1-etapa/src/test/java/teste.javalessless";
 
         ANTLRInputStream input = new ANTLRFileStream(filePath);
 
@@ -25,7 +25,7 @@ public class MainReader {
         for (Token t : tokens) {
             //System.out.println(t.getText() + " " + t.getType());
             testerLexico.addToken(t);
-             if ((t.getType() == scanner.Var) && (!tabelaDeSimbolos.containsValue(t.getText()))) {
+            if ((t.getType() == scanner.Var) && (!tabelaDeSimbolos.containsValue(t.getText())) && !scanner.verificSimilarity(t.getText())) {
                 tabelaDeSimbolos.put(i, t.getText());
                 ++i;
             }
