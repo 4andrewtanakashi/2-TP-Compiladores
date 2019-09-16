@@ -26,7 +26,7 @@ STA: 'static';
 FAL: 'false';
 TRU: 'true';
 
-Var: WORD(Numl | '_' | WORD )*;
+Var: (WORD | '_' | '$')(Numl | '_' | WORD )*;
 NumR: Numl'.'Numl | NNuml'.'Numl;
 
 //Operadores:
@@ -57,6 +57,5 @@ LOWW: 'a'..'z';
 UPPW: 'A'..'Z';
 Numl: '0'..'9';
 NNuml: '-'Numl;
-TYPES: 'int' | 'char' | 'boolean';
 WORD : (LOWW | UPPW)+;
 MODV: PRI | PUB | PRO;
