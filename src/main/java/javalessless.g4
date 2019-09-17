@@ -1,8 +1,16 @@
 lexer grammar javalessless;
-//
-//// Casos de Erro:
-//Error1: Numl(Var);
-//Error2:
+
+// Casos de Erro:
+Error1: Numl(Var);
+Error2: 'abtract';
+Error3: 'etends' | 'estends';
+Error4: 'privte';
+Error5: 'cass';
+Error6: 'proted' | 'procted';
+Error7: 'iff' | 'iif';
+Error8: 'wile' | 'whille';
+Error9: 'instancof';
+Error10: 'bool';
 
 // Palavras Reservadas:
 ABS: 'abstract';
@@ -29,6 +37,8 @@ BOO: 'boolean';
 STA: 'static';
 FAL: 'false';
 TRU: 'true';
+
+Error11: (WORD | Numl)*(ABS | EXT | PRI | PRO | PUB | CLA | THIS | NEW | NUL | IMP | PAC | RET | SUP | WHI | ELS | INS | CHA | VOI | BOO | STA | FAL | TRU)(Var)+;
 
 Var: (WORD | '_' | '$')(Numl | '_' | WORD )*;
 NumR: Numl'.'Numl | NNuml'.'Numl;
