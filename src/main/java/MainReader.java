@@ -25,10 +25,16 @@ public class MainReader {
             if ((t.getType() >= 1 && t.getType() <= 12)) {
                 System.out.println("identificador não reconhecido :" + t.getText());
                 System.out.println("Ocorreu um erro na linha: " + t.getLine() + ", coluna: " + t.getCharPositionInLine());
+                System.out.println();
+            }  else if ((t.getType() == scanner.Var) && (testerLexico.panicMode(t.getText()))) {
+                System.out.println("identificador não reconhecido :" + t.getText());
+                System.out.println("Ocorreu um erro na linha: " + t.getLine() + ", coluna: " + t.getCharPositionInLine());
+                System.out.println();
 
             } else if ((t.getType() == scanner.Var) && (!tabelaDeSimbolos.containsValue(t.getText()))) {
                 tabelaDeSimbolos.put(i, t.getText());
                 ++i;
+
             }
         }
     

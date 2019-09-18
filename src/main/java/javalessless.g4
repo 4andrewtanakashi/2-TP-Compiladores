@@ -1,19 +1,5 @@
 lexer grammar javalessless;
 
-// Casos de Erro:
-Error1: Numl(Var);
-Error2: 'abtract';
-Error3: 'etends' | 'estends';
-Error4: 'privte';
-Error5: 'cass';
-Error6: 'proted' | 'procted';
-Error7: 'iff' | 'iif';
-Error8: 'wile' | 'whille';
-Error9: 'instancof';
-Error10: 'bool';
-Error11: (WORD | Numl)*(ABS | EXT | PRI | PRO | PUB | CLA | THIS | NEW | NUL | IMP | PAC | RET | SUP | WHI | ELS | INS | CHA | VOI | BOO | STA | FAL | TRU)(Var)+;
-
-
 // Palavras Reservadas:
 ABS: 'abstract';
 EXT: 'extends';
@@ -39,6 +25,21 @@ BOO: 'boolean';
 STA: 'static';
 FAL: 'false';
 TRU: 'true';
+
+
+// Casos de Erro:
+Error1: Numl(Var);
+Error2: 'abtract';
+Error3: 'etends' | 'estends';
+Error4: 'privte';
+Error5: 'cass';
+Error6: 'proted' | 'procted';
+Error7: 'iff' | 'iif';
+Error8: 'wile' | 'whille';
+Error9: 'instancof';
+Error10: 'bool';
+Error11: (WORD | Numl)*(ABS | EXT | PRI | PRO | PUB | CLA | THIS | NEW | NUL | IMP | PAC | RET | SUP | WHI | ELS | INS | CHA | VOI | BOO | STA | FAL | TRU)(Var)+;
+
 
 Var: (WORD | '_' | '$')(Numl | '_' | WORD )*;
 NumR: Numl'.'Numl | NNuml'.'Numl;
@@ -69,7 +70,7 @@ Comment: '//' ~[\r\n]* -> skip;
 
 LOWW: 'a'..'z';
 UPPW: 'A'..'Z';
-Numl: ('0'..'9')+;
+Numl: ('+' |' -')?('0'..'9')+;
 NNuml: '-'Numl;
 WORD: (LOWW | UPPW)+;
 MODV: PRI | PUB | PRO;

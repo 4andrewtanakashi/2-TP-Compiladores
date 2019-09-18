@@ -19,7 +19,7 @@ public class Series {
     }
     public int computeSum ( int kind ) {
         int sum = a , t = a , i = n;
-        Whiile (i-- > 1) {
+        wwhile (i-- > 1) {
             iif ( kind == ARITHMETIC ) {
                 t += d;
             } else if ( kind == GEOMETRIC ) {
