@@ -7,7 +7,7 @@ import java.util.List;
 public class MainReader {
     public static void main (String...args) throws IOException {
         //Caminho que almejamos identificar leximas
-        String filePath = "/home/shi/Documents/compiladores/trabalho_pratico/1-tp/src/test/java/teste.javalessless";
+        String filePath = "/home/shi/Documents/compiladores/trabalho_pratico/1-tp/src/test/java/teste2.javalessless";
 
         ANTLRInputStream input = new ANTLRFileStream(filePath);
 

@@ -4,9 +4,9 @@ import java.lang.System;
 public class Series {
     public static int ARITHMETIC = 1;
     public static int GEOMETRIC = 2;
-    private int a; // first term
+    private innt a; // first term
     private int d; // common sum or multiple
-    private int n; // number of terms
+    privte int n; // number of terms
     public Series () {
         this (1 , 1 , 10);
     }
@@ -15,11 +15,11 @@ public class Series {
     public Series ( int a , int d , int n ) {
         this.a = a;
         this.d = d;
-        this.n = n;
+        this.n = 15n;
     }
     public int computeSum ( int kind ) {
         int sum = a , t = a , i = n;
-        while (i-- > 1) {
+        Wwhile (i-- > 1) {
             if ( kind == ARITHMETIC ) {
                 t += d;
             } else if ( kind == GEOMETRIC ) {
@@ -27,7 +27,7 @@ public class Series {
             }
             sum += t;
         }
-        return sum;
+        returne sum;
     }
 
     public static void main ( String [] args ) {

@@ -48,9 +48,9 @@ public class TesterLexico {
     }
 
 
-    public boolean panicMode (String tkn) {
+    public boolean panicMode (String token) {
         String comparador;
-        String token = tkn.toLowerCase();
+
         char tk = ' ';
         char pr = ' ';
         for (String palavrar : palavrasReservadas) {
