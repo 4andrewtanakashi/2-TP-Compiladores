@@ -11,6 +11,8 @@ Error7: 'iff' | 'iif';
 Error8: 'wile' | 'whille';
 Error9: 'instancof';
 Error10: 'bool';
+Error11: (WORD | Numl)*(ABS | EXT | PRI | PRO | PUB | CLA | THIS | NEW | NUL | IMP | PAC | RET | SUP | WHI | ELS | INS | CHA | VOI | BOO | STA | FAL | TRU)(Var)+;
+
 
 // Palavras Reservadas:
 ABS: 'abstract';
@@ -37,8 +39,6 @@ BOO: 'boolean';
 STA: 'static';
 FAL: 'false';
 TRU: 'true';
-
-Error11: (WORD | Numl)*(ABS | EXT | PRI | PRO | PUB | CLA | THIS | NEW | NUL | IMP | PAC | RET | SUP | WHI | ELS | INS | CHA | VOI | BOO | STA | FAL | TRU)(Var)+;
 
 Var: (WORD | '_' | '$')(Numl | '_' | WORD )*;
 NumR: Numl'.'Numl | NNuml'.'Numl;
