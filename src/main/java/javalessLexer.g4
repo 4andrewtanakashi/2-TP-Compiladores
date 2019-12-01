@@ -1,4 +1,4 @@
-lexer grammar javalessless;
+lexer grammar javalessLexer;
 
 // Palavras Reservadas:
 ABS: 'abstract';
@@ -26,9 +26,8 @@ STA: 'static';
 FAL: 'false';
 TRU: 'true';
 
-
 // Casos de Erro:
-Error1: Numl(Var);
+Error1: Numl(Identifier);
 Error2: 'abtract';
 Error3: 'etends' | 'estends';
 Error4: 'privte';
@@ -38,18 +37,29 @@ Error7: 'iff' | 'iif';
 Error8: 'wile' | 'whille';
 Error9: 'instancof';
 Error10: 'bool';
-Error11: (WORD | Numl)*(ABS | EXT | PRI | PRO | PUB | CLA | THIS | NEW | NUL | IMP | PAC | RET | SUP | WHI | ELS | INS | CHA | VOI | BOO | STA | FAL | TRU)(Var)+;
+Error11: (WORD | Numl)*(ABS | EXT | PRI | PRO | PUB | CLA | THIS | NEW | NUL | IMP | PAC | RET | SUP | WHI | ELS | INS | CHA | VOI | BOO | STA | FAL | TRU)(Identifier)+;
 
 
-Var: (WORD | '_' | '$')(Numl | '_' | WORD )*;
+Identifier: (WORD | '_' | '$')(Numl | '_' | WORD )*;
 NumR: Numl'.'Numl | NNuml'.'Numl;
 
 //Operadores:
 Atrib: '=';
 AtrArit: '+=';
-OpBool: '==' | '>' | '&&' | '<=';
-OpUni: '!'| '++' | '--';
-OpArit: '-' | '+' | '*';
+OpBool: EQL | LT | AND | LTE;
+OpUni: NOT| PPL | SSB;
+OpArit: SUB | PLU | TIM;
+
+AND: '&&';
+EQL: '==';
+LT: '>';
+LTE: '<=';
+PLU: '+';
+SUB: '-';
+TIM: '*';
+PPL : '++';
+SSB: '--';
+NOT: '!';
 
 //Separadores:
 VOP: '[';
