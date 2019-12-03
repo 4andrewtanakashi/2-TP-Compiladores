@@ -6,7 +6,7 @@ compilationUnit: packageSyntax? importSyntax* typeDeclaration* EOF;
 
 packageSyntax: PAC qualifiedIdentifier ';' ;
 
-importSyntax: IMP STA? qualifiedIdentifier PTR?  ';' ;
+importSyntax: IMP STA? qualifiedIdentifier (PTR TIM)?  ';' ;
 
 typeDeclaration: modifiers* classDeclaration;
 
@@ -14,9 +14,9 @@ classDeclaration: CLA Identifier (EXT qualifiedIdentifier)? classBody;
 
 classBody: KOP memberDecl* KCL;
 
-memberDecl: STA? block;
+memberDecl: ';' |STA? block;
 
-block: KOP blockStatement KCL;
+block: KOP blockStatement* KCL;
 
 blockStatement: localVariableDeclarationStatement ';' | statement;
 

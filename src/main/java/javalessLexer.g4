@@ -26,29 +26,14 @@ STA: 'static';
 FAL: 'false';
 TRU: 'true';
 
-// Casos de Erro:
-Error1: Numl(Identifier);
-Error2: 'abtract';
-Error3: 'etends' | 'estends';
-Error4: 'privte';
-Error5: 'cass';
-Error6: 'proted' | 'procted';
-Error7: 'iff' | 'iif';
-Error8: 'wile' | 'whille';
-Error9: 'instancof';
-Error10: 'bool';
-Error11: (WORD | Numl)*(ABS | EXT | PRI | PRO | PUB | CLA | THIS | NEW | NUL | IMP | PAC | RET | SUP | WHI | ELS | INS | CHA | VOI | BOO | STA | FAL | TRU)(Identifier)+;
-
-
 Identifier: (WORD | '_' | '$')(Numl | '_' | WORD )*;
-NumR: Numl'.'Numl | NNuml'.'Numl;
+NumR: (Digits '.' Digits? | '.' Digits) ExponentPart? [fFdD]?
+                   |       Digits (ExponentPart [fFdD]? | [fFdD])
+                   ;
 
 //Operadores:
 Atrib: '=';
 AtrArit: '+=';
-OpBool: EQL | LT | AND | LTE;
-OpUni: NOT| PPL | SSB;
-OpArit: SUB | PLU | TIM;
 
 AND: '&&';
 EQL: '==';
@@ -74,13 +59,20 @@ EndL: ';';
 PTR: '.';
 COMA: ',';
 
-NEWLINE: ('\r'? '\n' | '\r')+;
-WS : ( '\t' | ' ' | '\r' | '\n' | '\u000c')+ -> skip;
-Comment: '//' ~[\r\n]* -> skip;
+WS: [ \t\r\n\u000C]+ -> channel(HIDDEN);
+COMMENT: '/*' .*? '*/'    -> channel(HIDDEN);
+LINE_COMMENT: '//' ~[\r\n]* -> channel(HIDDEN);
 
 LOWW: 'a'..'z';
 UPPW: 'A'..'Z';
-Numl: ('+' |' -')?('0'..'9')+;
-NNuml: '-'Numl;
+Numl:   ('0' | [1-9] (Digits? | '_'+ Digits)) [lL]?;
 WORD: (LOWW | UPPW)+;
-MODV: PRI | PUB | PRO;
+MODV: (PRI | PUB | PRO);
+
+fragment ExponentPart
+    : [eE] [+-]? Digits
+    ;
+
+fragment Digits
+    : [0-9] ([0-9_]* [0-9])?
+    ;
