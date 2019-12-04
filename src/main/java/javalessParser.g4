@@ -8,34 +8,39 @@ packageSyntax: PAC qualifiedIdentifier ';' ;
 
 importSyntax: IMP STA? qualifiedIdentifier (PTR TIM)?  ';' ;
 
-typeDeclaration: modifiers* classDeclaration;
+typeDeclaration: modifiers* (classDeclaration) | ';' ;
 
-classDeclaration: CLA Identifier (EXT qualifiedIdentifier)? classBody;
+classDeclaration: CLA Identifier (EXT typeType)? classBody;
 
 classBody: KOP memberDecl* KCL;
 
-memberDecl: ';' |STA? block;
+memberDecl: ';' | STA? block | modifiers* classDeclaration;
 
 block: KOP blockStatement* KCL;
 
-blockStatement: localVariableDeclarationStatement ';' | statement;
+blockStatement: localVariableDeclarationStatement ';'
+              | statement
+              | localTypeDeclaration;
+
+localTypeDeclaration: modifiers* (classDeclaration) | ';' ;
 
 statement: blockLabel=block
            | IF parExpression statement (ELS statement)?
            | WHI parExpression statement
            | RET expression? ';'
-           | ';'
-           | statementExpression=expression ;
-
-formalParameters: AP formalParameter? FP ;
-
-formalParameter: parameter (',' parameter)* ;
-
-parameter: type Identifier ;
+           | statementExpression=expression
+           | EndL ;
 
 parExpression: AP expression FP ;
 
-localVariableDeclarationStatement: type variableDeclarators ;
+methodCall: Identifier '(' expressionList? ')'
+                | THIS '(' expressionList? ')'
+                | SUPER '(' expressionList? ')'
+                ;
+
+expressionList: expression (',' expression)* ;
+
+localVariableDeclarationStatement: typeType variableDeclarators ;
 
 variableDeclarators: variableDeclarator (COMA variableDeclarator)* ;
 
@@ -49,54 +54,106 @@ arrayInitializer: KOP (variableInitializer (COMA variableInitializer)* (COMA)? )
 
 arguments: AP (expression  (COMA expression)* )? FP;
 
-type: referenceType | basicType;
+//type: referenceType | basicType;
 
 basicType: BOO | CHA | INT;
 
-referenceType: basicType VOP VCL (VOP VCL)* | qualifiedIdentifier (VOP VCL)* ;
+//referenceType: basicType VOP VCL (VOP VCL)* | qualifiedIdentifier (VOP VCL)* ;
 
-expression: assignmentExpression ;
+expression: primary
+            | expression bop='.'
+                  ( Identifier
+                  | methodCall
+                  | THIS
+                  | SUP superSuffix
+                  )
+            | expression VOP expression VCL
+            | methodCall
+            | NEW creator
+            | '(' typeType ')' expression
+            | expression postfix=('++' | '--')
+            | prefix=('+'|'-'|'++'|'--') expression
+            | prefix='!' expression
+            | expression '*' expression
+            | expression bop=('+'|'-') expression
+            | expression bop=('<=' | '>') expression
+            | expression bop=INS typeType
+            | expression '==' expression
+            | expression bop='&&' expression
+            | <assoc=right> expression
+              bop=('=' | '+=')  expression ;
 
-assignmentExpression: conditionalAndExpression ( (Atrib | AtrArit) assignmentExpression)? ;
+//expression: assignmentExpression ;
+//
+//assignmentExpression: conditionalAndExpression ( (Atrib | AtrArit) assignmentExpression)? ;
+//
+//conditionalAndExpression: equalityExpression (AND equalityExpression)* ;
+//
+//equalityExpression: relationalExpression ( relationalExpression)* ;
+//
+//relationalExpression: additiveExpression ( (LT | LTE) additiveExpression | INS referenceType)? ;
+//
+//additiveExpression: multiplicativeExpression ( (PLU | )  multiplicativeExpression )* ;
+//
+//multiplicativeExpression: unaryExpression (TIM unaryExpression)*;
+//
+//unaryExpression: PPL unaryExpression
+//               | SSB unaryExpression
+//               | simpleUnaryExpression;
+//
+//simpleUnaryExpression: NOT unaryExpression
+//                     | '(' basicType ')' unaryExpression //CAST
+//                     | '(' referenceType ')' simpleUnaryExpression //CAST
+//                     | postfixExpression;
+//
+//postfixExpression: primary (selector)* postfix=('++' | '--');
 
-conditionalAndExpression: equalityExpression (AND equalityExpression)* ;
+//formalParameters: AP formalParameter? FP ;
+//
+//formalParameter: parameter (',' parameter)* ;
+//
+//parameter: type Identifier ;
 
-equalityExpression: relationalExpression ( relationalExpression)* ;
-
-relationalExpression: additiveExpression ( (LT | LTE) additiveExpression | INS referenceType)? ;
-
-additiveExpression: multiplicativeExpression ( (PLU | )  multiplicativeExpression )* ;
-
-multiplicativeExpression: unaryExpression (TIM unaryExpression)*;
-
-unaryExpression: PPL unaryExpression
-               | SSB unaryExpression
-               | simpleUnaryExpression;
-
-simpleUnaryExpression: NOT unaryExpression
-                     | '(' basicType ')' unaryExpression //CAST
-                     | '(' referenceType ')' simpleUnaryExpression //CAST
-                     | postfixExpression;
-
-postfixExpression: primary (selector)* postfix=('++' | '--');
-
-selector: bop='.' qualifiedIdentifier (arguments)? | VOP expression VCL;
+//selector: bop='.' qualifiedIdentifier (arguments)? | VOP expression VCL;
 
 primary: parExpression
-       | THIS (arguments)?
-       | SUP (arguments | bop='.' Identifier (arguments)? )
+       | THIS
+       | SUP
        | literal
-       | NEW creator
-       | qualifiedIdentifier (arguments)? ;
+       | Identifier
+       | typeTypeOrVoid '.' CLA ;
 
-creator: (basicType | qualifiedIdentifier)  ( arguments
-                                            | '[' ']' ('[' ']')* (arrayInitializer)?
-                                            | newArrayDeclarator ) ;
+creator: basicType
+       | basicType (arrayCreatorRest | classCreatorRest);
 
-newArrayDeclarator: '[' expression ']' ('[' expression ']')*  ('['']')* ;
+arrayCreatorRest:
+    '[' (']' ('[' ']')* arrayInitializer | expression ']' ('[' expression ']')* ('[' ']')*)
+                      ;
+classCreatorRest
+    : arguments classBody?
+    ;
 
-modifiers: MODV | STA | ABS;
+//newArrayDeclarator: '[' expression ']' ('[' expression ']')*  ('['']')* ;
+
+typeTypeOrVoid
+    : typeType
+    | VOI
+    ;
+
+modifiers: PRI | PUB | PRO | STA | ABS;
+
+typeType: basicType (VOP VCL)* ;
+
+superSuffix
+    : arguments
+    | '.' IDENTIFIER arguments?
+    ;
 
 qualifiedIdentifier: Identifier (PTR Identifier)*;
 
-literal: INT | CHA | TRU | FAL | NUL | Str ;
+literal: Numl
+       | CharLiteral
+       | StringLiteral
+       | BoolLiteral
+       | NUL
+     ;
