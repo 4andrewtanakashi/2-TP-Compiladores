@@ -45,7 +45,7 @@ statement: blockLabel=block
            | IF parExpression statement (ELS statement)?
            | WHI parExpression statement
            | RET expression? ';'
-           | statementExpression=expression
+           | statementExpression=expression ';'
            | EndL ;
 
 parExpression: AP expression FP ;
@@ -82,7 +82,7 @@ variableInitializer: arrayInitializer | expression ;
 
 arrayInitializer: '{' (variableInitializer (',' variableInitializer)* (',')? )? '}' ;
 
-arguments: AP (expression  (COMA expression)* )? FP;
+arguments: '(' expressionList? ')' ;
 
 //type: referenceType | basicType;
 
@@ -154,7 +154,8 @@ primary: parExpression
        | typeTypeOrVoid '.' CLA ;
 
 creator: basicType
-       | basicType (arrayCreatorRest | classCreatorRest);
+       | basicType (arrayCreatorRest | classCreatorRest)
+       | Identifier (arrayCreatorRest | classCreatorRest);
 
 constructorDeclaration: Identifier formalParameters  constructorBody=block ;
 
