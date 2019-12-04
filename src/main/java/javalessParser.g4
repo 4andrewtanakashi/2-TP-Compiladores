@@ -12,15 +12,32 @@ typeDeclaration: modifiers* (classDeclaration) | ';' ;
 
 classDeclaration: CLA Identifier (EXT typeType)? classBody;
 
-classBody: KOP memberDecl* KCL;
+classBody: KOP classBodyDeclaration*  KCL;
 
-memberDecl: ';' | STA? block | modifiers* classDeclaration;
+
+classBodyDeclaration: ';'
+                    | STA? block
+                    | modifiers* memberDecl
+                          ;
+
+
+memberDecl: methodDeclaration
+            | constructorDeclaration
+            | fieldDeclaration
+            | classDeclaration;
+
+methodDeclaration: typeTypeOrVoid Identifier formalParameters ('[' ']')*  methodBody ;
 
 block: KOP blockStatement* KCL;
 
 blockStatement: localVariableDeclarationStatement ';'
               | statement
               | localTypeDeclaration;
+
+methodBody
+    : block
+    | ';'
+    ;
 
 localTypeDeclaration: modifiers* (classDeclaration) | ';' ;
 
@@ -35,10 +52,23 @@ parExpression: AP expression FP ;
 
 methodCall: Identifier '(' expressionList? ')'
                 | THIS '(' expressionList? ')'
-                | SUPER '(' expressionList? ')'
+                | SUP '(' expressionList? ')'
                 ;
 
 expressionList: expression (',' expression)* ;
+
+formalParameters
+    : '(' formalParameterList? ')'
+    ;
+
+formalParameterList
+    : formalParameter (',' formalParameter)*
+    ;
+
+formalParameter
+    :  typeType variableDeclaratorId
+    ;
+
 
 localVariableDeclarationStatement: typeType variableDeclarators ;
 
@@ -50,7 +80,7 @@ variableDeclaratorId: Identifier (VOP VCL)* ;
 
 variableInitializer: arrayInitializer | expression ;
 
-arrayInitializer: KOP (variableInitializer (COMA variableInitializer)* (COMA)? )? KCL;
+arrayInitializer: '{' (variableInitializer (',' variableInitializer)* (',')? )? '}' ;
 
 arguments: AP (expression  (COMA expression)* )? FP;
 
@@ -126,6 +156,12 @@ primary: parExpression
 creator: basicType
        | basicType (arrayCreatorRest | classCreatorRest);
 
+constructorDeclaration: Identifier formalParameters  constructorBody=block ;
+
+fieldDeclaration
+    : typeType variableDeclarators ';'
+    ;
+
 arrayCreatorRest:
     '[' (']' ('[' ']')* arrayInitializer | expression ']' ('[' expression ']')* ('[' ']')*)
                       ;
@@ -138,15 +174,16 @@ classCreatorRest
 typeTypeOrVoid
     : typeType
     | VOI
+    | Identifier
     ;
 
 modifiers: PRI | PUB | PRO | STA | ABS;
 
-typeType: basicType (VOP VCL)* ;
+typeType: (basicType) (VOP VCL)* ;
 
 superSuffix
     : arguments
-    | '.' IDENTIFIER arguments?
+    | '.' Identifier arguments?
     ;
 
 qualifiedIdentifier: Identifier (PTR Identifier)*;

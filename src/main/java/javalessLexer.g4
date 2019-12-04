@@ -30,7 +30,7 @@ Identifier: Letter LetterOrDigit* ;
 Numl:   ('0' | [1-9] (Digits? | '_'+ Digits)) [lL]?;
 CharLiteral: '\'' (~['\\\r\n] | EscapeSequence) '\'';
 StringLiteral: '"' (~["\\\r\n] | EscapeSequence)* '"';
-BoolLiteral: 'true' | 'false' ;
+BoolLiteral: TRU | FAL ;
 
 //Operadores:
 Atrib: '=';

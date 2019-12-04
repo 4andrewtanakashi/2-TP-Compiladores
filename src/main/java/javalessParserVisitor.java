@@ -46,11 +46,23 @@ public interface javalessParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitClassBody(javalessParser.ClassBodyContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link javalessParser#classBodyDeclaration}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitClassBodyDeclaration(javalessParser.ClassBodyDeclarationContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link javalessParser#memberDecl}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitMemberDecl(javalessParser.MemberDeclContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link javalessParser#methodDeclaration}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMethodDeclaration(javalessParser.MethodDeclarationContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link javalessParser#block}.
 	 * @param ctx the parse tree
@@ -63,6 +75,12 @@ public interface javalessParserVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitBlockStatement(javalessParser.BlockStatementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link javalessParser#methodBody}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMethodBody(javalessParser.MethodBodyContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link javalessParser#localTypeDeclaration}.
 	 * @param ctx the parse tree
@@ -93,6 +111,24 @@ public interface javalessParserVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitExpressionList(javalessParser.ExpressionListContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link javalessParser#formalParameters}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFormalParameters(javalessParser.FormalParametersContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link javalessParser#formalParameterList}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFormalParameterList(javalessParser.FormalParameterListContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link javalessParser#formalParameter}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFormalParameter(javalessParser.FormalParameterContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link javalessParser#localVariableDeclarationStatement}.
 	 * @param ctx the parse tree
@@ -159,6 +195,18 @@ public interface javalessParserVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitCreator(javalessParser.CreatorContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link javalessParser#constructorDeclaration}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitConstructorDeclaration(javalessParser.ConstructorDeclarationContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link javalessParser#fieldDeclaration}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFieldDeclaration(javalessParser.FieldDeclarationContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link javalessParser#arrayCreatorRest}.
 	 * @param ctx the parse tree

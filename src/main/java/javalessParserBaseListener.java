@@ -87,6 +87,18 @@ public class javalessParserBaseListener implements javalessParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterClassBodyDeclaration(javalessParser.ClassBodyDeclarationContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitClassBodyDeclaration(javalessParser.ClassBodyDeclarationContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterMemberDecl(javalessParser.MemberDeclContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -94,6 +106,18 @@ public class javalessParserBaseListener implements javalessParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitMemberDecl(javalessParser.MemberDeclContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterMethodDeclaration(javalessParser.MethodDeclarationContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitMethodDeclaration(javalessParser.MethodDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -118,6 +142,18 @@ public class javalessParserBaseListener implements javalessParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitBlockStatement(javalessParser.BlockStatementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterMethodBody(javalessParser.MethodBodyContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitMethodBody(javalessParser.MethodBodyContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -178,6 +214,42 @@ public class javalessParserBaseListener implements javalessParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitExpressionList(javalessParser.ExpressionListContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterFormalParameters(javalessParser.FormalParametersContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFormalParameters(javalessParser.FormalParametersContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterFormalParameterList(javalessParser.FormalParameterListContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFormalParameterList(javalessParser.FormalParameterListContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterFormalParameter(javalessParser.FormalParameterContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFormalParameter(javalessParser.FormalParameterContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -310,6 +382,30 @@ public class javalessParserBaseListener implements javalessParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitCreator(javalessParser.CreatorContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterConstructorDeclaration(javalessParser.ConstructorDeclarationContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitConstructorDeclaration(javalessParser.ConstructorDeclarationContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterFieldDeclaration(javalessParser.FieldDeclarationContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFieldDeclaration(javalessParser.FieldDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

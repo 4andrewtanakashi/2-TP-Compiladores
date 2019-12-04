@@ -1,26 +1,29 @@
 public class TP2 extends javalessParserBaseListener {
 
 
-    @Override
-    public void enterCompilationUnit(javalessParser.CompilationUnitContext ctx) {
-        System.out.println( "{  enterCompilationUnit :");
-        //if (ctx.packageSyntax() != null)
-            //System.out.println("Name:" + ctx.packageSyntax().getText());
-
-//        if (ctx.packageSyntax() != null) {
-//            if (ctx.importSyntax().size() > 0) {
-//                for (javalessParser.ImportSyntaxContext var : ctx.importSyntax()) {
-//                    System.out.println();
-//                }
-//            }
-//        }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override public void enterCompilationUnit(javalessParser.CompilationUnitContext ctx) {
+        System.out.println("{enterCompilationUnit");
     }
-
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
     @Override public void exitCompilationUnit(javalessParser.CompilationUnitContext ctx) {
-        System.out.println("}");
+        System.out.println("exitCompilationUnit}");
     }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
     @Override public void enterPackageSyntax(javalessParser.PackageSyntaxContext ctx) {
-        System.out.println( "{ enterPackageSyntax: ");
+        System.out.println("    {enterPackageSyntax");
     }
     /**
      * {@inheritDoc}
@@ -28,27 +31,32 @@ public class TP2 extends javalessParserBaseListener {
      * <p>The default implementation does nothing.</p>
      */
     @Override public void exitPackageSyntax(javalessParser.PackageSyntaxContext ctx) {
-        System.out.println("exitPackageSyntax }");
+        System.out.println("    exitPackageSyntax}");
+
     }
     /**
      * {@inheritDoc}
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void enterImportSyntax(javalessParser.ImportSyntaxContext ctx) { }
+    @Override public void enterImportSyntax(javalessParser.ImportSyntaxContext ctx) {
+        System.out.println("    {enterImportSyntax");
+    }
     /**
      * {@inheritDoc}
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void exitImportSyntax(javalessParser.ImportSyntaxContext ctx) { }
+    @Override public void exitImportSyntax(javalessParser.ImportSyntaxContext ctx) {
+        System.out.println("    exitImportSyntax}");
+    }
     /**
      * {@inheritDoc}
      *
      * <p>The default implementation does nothing.</p>
      */
     @Override public void enterTypeDeclaration(javalessParser.TypeDeclarationContext ctx) {
-        System.out.println("{ enterTypeDeclaration: ");
+        System.out.println("    {enterTypeDeclaration");
     }
     /**
      * {@inheritDoc}
@@ -56,32 +64,50 @@ public class TP2 extends javalessParserBaseListener {
      * <p>The default implementation does nothing.</p>
      */
     @Override public void exitTypeDeclaration(javalessParser.TypeDeclarationContext ctx) {
-        System.out.println("exitTypeDeclaration }");
+        System.out.println("    exitTypeDeclaration}");
     }
     /**
      * {@inheritDoc}
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void enterClassDeclaration(javalessParser.ClassDeclarationContext ctx) { }
+    @Override public void enterClassDeclaration(javalessParser.ClassDeclarationContext ctx) {
+        System.out.println("        {enterClassDeclaration");
+    }
     /**
      * {@inheritDoc}
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void exitClassDeclaration(javalessParser.ClassDeclarationContext ctx) { }
+    @Override public void exitClassDeclaration(javalessParser.ClassDeclarationContext ctx) {
+        System.out.println("        exitClassDeclaration}");
+
+    }
     /**
      * {@inheritDoc}
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void enterClassBody(javalessParser.ClassBodyContext ctx) { }
+    @Override public void enterClassBody(javalessParser.ClassBodyContext ctx) {
+        System.out.println("            {enterClassBody");
+    }
     /**
      * {@inheritDoc}
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void exitClassBody(javalessParser.ClassBodyContext ctx) { }
+    @Override public void exitClassBody(javalessParser.ClassBodyContext ctx) {
+        System.out.println("            exitClassBody}");
+
+    }
+
+    @Override public void enterClassBodyDeclaration(javalessParser.ClassBodyDeclarationContext ctx) { }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override public void exitClassBodyDeclaration(javalessParser.ClassBodyDeclarationContext ctx) { }
     /**
      * {@inheritDoc}
      *
@@ -94,6 +120,23 @@ public class TP2 extends javalessParserBaseListener {
      * <p>The default implementation does nothing.</p>
      */
     @Override public void exitMemberDecl(javalessParser.MemberDeclContext ctx) { }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override public void enterMethodDeclaration(javalessParser.MethodDeclarationContext ctx) {
+        System.out.println("                    {enterMethodDeclaration");
+    }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override public void exitMethodDeclaration(javalessParser.MethodDeclarationContext ctx) {
+        System.out.println("                    exitMethodDeclaration}");
+
+    }
     /**
      * {@inheritDoc}
      *
@@ -118,6 +161,18 @@ public class TP2 extends javalessParserBaseListener {
      * <p>The default implementation does nothing.</p>
      */
     @Override public void exitBlockStatement(javalessParser.BlockStatementContext ctx) { }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override public void enterMethodBody(javalessParser.MethodBodyContext ctx) { }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override public void exitMethodBody(javalessParser.MethodBodyContext ctx) { }
     /**
      * {@inheritDoc}
      *
@@ -178,6 +233,42 @@ public class TP2 extends javalessParserBaseListener {
      * <p>The default implementation does nothing.</p>
      */
     @Override public void exitExpressionList(javalessParser.ExpressionListContext ctx) { }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override public void enterFormalParameters(javalessParser.FormalParametersContext ctx) { }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override public void exitFormalParameters(javalessParser.FormalParametersContext ctx) { }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override public void enterFormalParameterList(javalessParser.FormalParameterListContext ctx) { }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override public void exitFormalParameterList(javalessParser.FormalParameterListContext ctx) { }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override public void enterFormalParameter(javalessParser.FormalParameterContext ctx) { }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override public void exitFormalParameter(javalessParser.FormalParameterContext ctx) { }
     /**
      * {@inheritDoc}
      *
@@ -315,6 +406,30 @@ public class TP2 extends javalessParserBaseListener {
      *
      * <p>The default implementation does nothing.</p>
      */
+    @Override public void enterConstructorDeclaration(javalessParser.ConstructorDeclarationContext ctx) { }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override public void exitConstructorDeclaration(javalessParser.ConstructorDeclarationContext ctx) { }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override public void enterFieldDeclaration(javalessParser.FieldDeclarationContext ctx) { }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override public void exitFieldDeclaration(javalessParser.FieldDeclarationContext ctx) { }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
     @Override public void enterArrayCreatorRest(javalessParser.ArrayCreatorRestContext ctx) { }
     /**
      * {@inheritDoc}
@@ -339,21 +454,24 @@ public class TP2 extends javalessParserBaseListener {
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void enterTypeTypeOrVoid(javalessParser.TypeTypeOrVoidContext ctx) { }
-    /**
-     * {@inheritDoc}
-     *
-     * <p>The default implementation does nothing.</p>
-     */
-    @Override public void exitTypeTypeOrVoid(javalessParser.TypeTypeOrVoidContext ctx) { }
-    /**
-     * {@inheritDoc}
-     *
-     * <p>The default implementation does nothing.</p>
-     */
-    @Override public void enterModifiers(javalessParser.ModifiersContext ctx) {
-        System.out.println( "{  enterCompilationUnit :");
+    @Override public void enterTypeTypeOrVoid(javalessParser.TypeTypeOrVoidContext ctx) {
+        System.out.println("                            {enterTypeTypeOrVoid");
     }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override public void exitTypeTypeOrVoid(javalessParser.TypeTypeOrVoidContext ctx) {
+        System.out.println("                            exitTypeTypeOrVoid}");
+
+    }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override public void enterModifiers(javalessParser.ModifiersContext ctx) { }
     /**
      * {@inheritDoc}
      *
@@ -408,4 +526,6 @@ public class TP2 extends javalessParserBaseListener {
      * <p>The default implementation does nothing.</p>
      */
     @Override public void exitLiteral(javalessParser.LiteralContext ctx) { }
+
+
 }

@@ -67,6 +67,16 @@ public interface javalessParserListener extends ParseTreeListener {
 	 */
 	void exitClassBody(javalessParser.ClassBodyContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link javalessParser#classBodyDeclaration}.
+	 * @param ctx the parse tree
+	 */
+	void enterClassBodyDeclaration(javalessParser.ClassBodyDeclarationContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link javalessParser#classBodyDeclaration}.
+	 * @param ctx the parse tree
+	 */
+	void exitClassBodyDeclaration(javalessParser.ClassBodyDeclarationContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link javalessParser#memberDecl}.
 	 * @param ctx the parse tree
 	 */
@@ -76,6 +86,16 @@ public interface javalessParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitMemberDecl(javalessParser.MemberDeclContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link javalessParser#methodDeclaration}.
+	 * @param ctx the parse tree
+	 */
+	void enterMethodDeclaration(javalessParser.MethodDeclarationContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link javalessParser#methodDeclaration}.
+	 * @param ctx the parse tree
+	 */
+	void exitMethodDeclaration(javalessParser.MethodDeclarationContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link javalessParser#block}.
 	 * @param ctx the parse tree
@@ -96,6 +116,16 @@ public interface javalessParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitBlockStatement(javalessParser.BlockStatementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link javalessParser#methodBody}.
+	 * @param ctx the parse tree
+	 */
+	void enterMethodBody(javalessParser.MethodBodyContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link javalessParser#methodBody}.
+	 * @param ctx the parse tree
+	 */
+	void exitMethodBody(javalessParser.MethodBodyContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link javalessParser#localTypeDeclaration}.
 	 * @param ctx the parse tree
@@ -146,6 +176,36 @@ public interface javalessParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitExpressionList(javalessParser.ExpressionListContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link javalessParser#formalParameters}.
+	 * @param ctx the parse tree
+	 */
+	void enterFormalParameters(javalessParser.FormalParametersContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link javalessParser#formalParameters}.
+	 * @param ctx the parse tree
+	 */
+	void exitFormalParameters(javalessParser.FormalParametersContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link javalessParser#formalParameterList}.
+	 * @param ctx the parse tree
+	 */
+	void enterFormalParameterList(javalessParser.FormalParameterListContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link javalessParser#formalParameterList}.
+	 * @param ctx the parse tree
+	 */
+	void exitFormalParameterList(javalessParser.FormalParameterListContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link javalessParser#formalParameter}.
+	 * @param ctx the parse tree
+	 */
+	void enterFormalParameter(javalessParser.FormalParameterContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link javalessParser#formalParameter}.
+	 * @param ctx the parse tree
+	 */
+	void exitFormalParameter(javalessParser.FormalParameterContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link javalessParser#localVariableDeclarationStatement}.
 	 * @param ctx the parse tree
@@ -256,6 +316,26 @@ public interface javalessParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitCreator(javalessParser.CreatorContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link javalessParser#constructorDeclaration}.
+	 * @param ctx the parse tree
+	 */
+	void enterConstructorDeclaration(javalessParser.ConstructorDeclarationContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link javalessParser#constructorDeclaration}.
+	 * @param ctx the parse tree
+	 */
+	void exitConstructorDeclaration(javalessParser.ConstructorDeclarationContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link javalessParser#fieldDeclaration}.
+	 * @param ctx the parse tree
+	 */
+	void enterFieldDeclaration(javalessParser.FieldDeclarationContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link javalessParser#fieldDeclaration}.
+	 * @param ctx the parse tree
+	 */
+	void exitFieldDeclaration(javalessParser.FieldDeclarationContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link javalessParser#arrayCreatorRest}.
 	 * @param ctx the parse tree
