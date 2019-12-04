@@ -179,7 +179,7 @@ typeTypeOrVoid
 
 modifiers: PRI | PUB | PRO | STA | ABS;
 
-typeType: (basicType) (VOP VCL)* ;
+typeType: (basicType | Identifier) (VOP VCL)* ;
 
 superSuffix
     : arguments

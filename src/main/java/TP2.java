@@ -178,37 +178,55 @@ public class TP2 extends javalessParserBaseListener {
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void enterLocalTypeDeclaration(javalessParser.LocalTypeDeclarationContext ctx) { }
+    @Override public void enterLocalTypeDeclaration(javalessParser.LocalTypeDeclarationContext ctx) {
+        System.out.println("                                            " +
+                "{enterLocalTypeDeclaration");
+    }
     /**
      * {@inheritDoc}
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void exitLocalTypeDeclaration(javalessParser.LocalTypeDeclarationContext ctx) { }
+    @Override public void exitLocalTypeDeclaration(javalessParser.LocalTypeDeclarationContext ctx) {
+        System.out.println("                                            " +
+                "exitLocalTypeDeclaration}");
+    }
     /**
      * {@inheritDoc}
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void enterStatement(javalessParser.StatementContext ctx) { }
+    @Override public void enterStatement(javalessParser.StatementContext ctx) {
+        System.out.println("                                        " +
+                "{enterStatement");
+    }
     /**
      * {@inheritDoc}
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void exitStatement(javalessParser.StatementContext ctx) { }
+    @Override public void exitStatement(javalessParser.StatementContext ctx) {
+        System.out.println("                                        " +
+                "exitStatement}");
+    }
     /**
      * {@inheritDoc}
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void enterParExpression(javalessParser.ParExpressionContext ctx) { }
+    @Override public void enterParExpression(javalessParser.ParExpressionContext ctx) {
+        System.out.println("                                        " +
+                "       {enterParExpression");
+    }
     /**
      * {@inheritDoc}
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void exitParExpression(javalessParser.ParExpressionContext ctx) { }
+    @Override public void exitParExpression(javalessParser.ParExpressionContext ctx) {
+        System.out.println("                                        " +
+                "       exitParExpression}");
+    }
     /**
      * {@inheritDoc}
      *
@@ -274,25 +292,35 @@ public class TP2 extends javalessParserBaseListener {
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void enterLocalVariableDeclarationStatement(javalessParser.LocalVariableDeclarationStatementContext ctx) { }
+    @Override public void enterLocalVariableDeclarationStatement(javalessParser.LocalVariableDeclarationStatementContext ctx) {
+        System.out.println("                                    {localVariableDeclarationStatement");
+    }
     /**
      * {@inheritDoc}
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void exitLocalVariableDeclarationStatement(javalessParser.LocalVariableDeclarationStatementContext ctx) { }
+    @Override public void exitLocalVariableDeclarationStatement(javalessParser.LocalVariableDeclarationStatementContext ctx) {
+        System.out.println("                                    exitLocalVariableDeclarationStatement}");
+    }
     /**
      * {@inheritDoc}
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void enterVariableDeclarators(javalessParser.VariableDeclaratorsContext ctx) { }
+    @Override public void enterVariableDeclarators(javalessParser.VariableDeclaratorsContext ctx) {
+        System.out.println("                                        " +
+                "{variableDeclarators");
+    }
     /**
      * {@inheritDoc}
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void exitVariableDeclarators(javalessParser.VariableDeclaratorsContext ctx) { }
+    @Override public void exitVariableDeclarators(javalessParser.VariableDeclaratorsContext ctx) {
+        System.out.println("                                        " +
+                "exitVariableDeclarators}");
+    }
     /**
      * {@inheritDoc}
      *
