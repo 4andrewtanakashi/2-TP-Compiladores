@@ -12,7 +12,7 @@ public class Series {
     }
 
 
-    public while ( int a , int d , int n ) {
+    public fun ( int a , int d , int n ) {
         this.a = a;
         this.d = d;
         this.n = 15;
@@ -31,7 +31,7 @@ public class Series {
     }
 
     public static void main ( String [] args ) {
-        int a = Integer.parseInt ( args[0] ºIº);
+        int a = Integer.parseInt ( args[0]);
         int d = Integer.parseInt ( args[1]);
         int n = Integer.parseInt ( args[2]);
         Series s = new Series (a, d , n );
